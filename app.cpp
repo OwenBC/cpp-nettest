@@ -1,7 +1,10 @@
 #include <iostream>
+#include <unistd.h>
 #include <ctype.h>
-#include "game.h"
+#include "game.hpp"
 using namespace std;
+
+#define PORT 14201
 
 int main() {
     // host or client?
@@ -13,7 +16,11 @@ int main() {
         mode = tolower(mode);
     }
 
-    Game g(mode=='h');
+    Game g(mode=='h', PORT);
+
+    while(1){
+        sleep(5);
+    }
 
     return 0;
 }
